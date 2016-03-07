@@ -24,6 +24,14 @@ body {
   background-size: cover;
 }
 
+.active {
+  background-color: #3498db;
+}
+
+.inactive {
+  background-color: #ecf0f1;
+}
+
 .header {
   text-align: center;
   margin-top: 30px;
@@ -46,7 +54,32 @@ body {
   position: fixed;
   left: 0;
   right: 0;
-  display: none;
+}
+
+.player-number {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.players-tab {
+  height: 50px;
+  padding: 0 20px;
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.players1 {
+  margin-left: -4px;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+.players2 {
+  margin-left: -4px;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
 }
 
 .board {
