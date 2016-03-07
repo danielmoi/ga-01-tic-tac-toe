@@ -10,13 +10,25 @@ $(document).on('click', '.square', function() {
   console.log($(this)[0].id);
   var id = parseInt($(this)[0].id);
   play(id);
+  drawMarker(id);
   checkWin();
 });
 
 var gameStarted;
 
 var arrPlayer = [];
-var currentPlayer = 'player1';
+
+var players = {
+  player1: {
+    name: 'Player 1',
+    tile: 'X'
+  },
+  player2: {
+    name: 'Player 2',
+    tile: 'O'
+  }
+};
+var currentPlayer = players.player1.name;
 
 var arrWinningCombos = [
   // rows
@@ -43,14 +55,21 @@ var play = function(id) {
   updateDisplay();
 };
 
-
-
-var switchTurn = function() {
-  if (currentPlayer === 'player1') {
-    return 'player2';
+var drawMarker = function(id) {
+  if (currentPlayer === 'Player 1') {
+    $('#'+id).text(players.player1.tile);
   }
   else {
-    return 'player1';
+    $('#'+id).text(players.player2.tile);
+  }
+};
+
+var switchTurn = function() {
+  if (currentPlayer === 'Player 1') {
+    return 'Player 2';
+  }
+  else {
+    return 'Player 1';
   }
 };
 
