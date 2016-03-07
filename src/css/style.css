@@ -30,6 +30,22 @@ body {
   padding-top: 30px;
 }
 
+.board {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.square {
+  height: 50px;
+  width: 50px;
+  background: lightgray;
+  display: inline-block;
+  margin: 2px;
+  border: 1px solid gray;
+  cursor: pointer;
+  position: relative;
+}
+
 input {
   padding: 10px;
   background-color: white;
