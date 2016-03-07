@@ -40,11 +40,11 @@ body {
 
 }
 
-.player-number {
+.game-mode {
   text-align: center;
   margin-top: 20px;
 }
-.players-tab {
+.mode-tab {
   height: 50px;
   padding: 0 20px;
   display: inline-block;
@@ -54,16 +54,58 @@ body {
   background-color: $inactive;
 }
 
-.players1 {
+.solo {
   margin-left: -4px;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
 
 }
-.players2{
+.pairs {
   margin-left: -4px;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
+}
+
+.mode-options {
+  margin: 20px auto;
+  border: 1px solid $active;
+  padding: 2em;
+  width: 80%;
+  height: 200px;
+  border-radius: 1em;
+}
+
+.start-container {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.solo-options {
+  display: none;
+}
+
+.player1,
+.switch,
+.player2 {
+  display: inline-block;
+  padding: 1em;
+}
+
+.switch {
+  cursor: pointer;
+}
+.switch .fa {
+  font-size:1.5em;
+  color: $action;
+}
+
+.tile {
+  padding: 10px;
+  margin: 10px;
+  font-size: 3em;
+  font-weight: 900;
 }
 
 // BOARD
@@ -118,14 +160,23 @@ button {
   background-color: gray;
   color: white;
   font-size: 1em;
-  border: 1px solid darkgrey;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-  border-radius: 5px;
+  border: 1px solid gray;
+  box-shadow: 0 0 5 rgba(0,0,0,0.5);
+  border-radius: 1em;
   cursor: pointer;
   &:focus {
     outline: none;
   }
 }
+
+.start-button {
+  background-color: $action;
+  border: 1px solid $action;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
 
 // COLOURS
 .active {
