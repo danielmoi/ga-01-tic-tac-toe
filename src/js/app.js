@@ -31,18 +31,10 @@ var play = function(id) {
   arrPlayer.sort();
   console.log(arrPlayer);
   currentPlayer = switchTurn();
-  switchTurn();
   console.log(currentPlayer);
 };
 
-var switchTurn = function() {
-  if (currentPlayer === 'player1') {
-    currentPlayer = 'player2';
-  }
-  else {
-    currentPlayer = 'player1';
-  }
-};
+
 
 var switchTurn = function() {
   if (currentPlayer === 'player1') {
