@@ -39,7 +39,7 @@ var arrWinningCombos = [
 var arrPlayedMoves = ['nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody'];
 
 var updateInstructions = function() {
-  $('.current-player').text(currentPlayer);
+  displayMessage('Current player: '+ currentPlayer);
 };
 
 var getCurrentPlayerObject = function() {
@@ -91,14 +91,14 @@ var checkWin = function(currentPlayerObject) {
     // console.log(arrPlayedMoves[element[0]], arrPlayedMoves[element[1]], arrPlayedMoves[element[2]]);
     if (arrPlayedMoves[element[0]] !== 'nobody' && arrPlayedMoves[element[0]] === arrPlayedMoves[element[1]] && arrPlayedMoves[element[1]] === arrPlayedMoves[element[2]]) {
       console.log('Winner: ' + currentPlayerObject.name);
-      declareWinner(currentPlayerObject.name);
+      displayMessage(currentPlayerObject.name + ' wins!');
       gameActive = false;
     }
   });
 };
 
-var declareWinner = function(name) {
-  $('.message').text('Winner: ' + name);
+var displayMessage = function(str) {
+  $('.message').text(str);
 };
 
 // Reset
