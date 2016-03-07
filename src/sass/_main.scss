@@ -14,14 +14,7 @@ body {
   background-size: cover;
 }
 
-// COLOURS
-.active {
-  background-color: $active;
-}
 
-.inactive {
-  background-color: $inactive;
-}
 // TYPOGRAPHY
 .header {
   text-align: center;
@@ -58,12 +51,14 @@ body {
   text-align: center;
   line-height: 50px;
   cursor: pointer;
+  background-color: $inactive;
 }
 
 .players1 {
   margin-left: -4px;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
+
 }
 .players2{
   margin-left: -4px;
@@ -130,4 +125,13 @@ button {
   &:focus {
     outline: none;
   }
+}
+
+// COLOURS
+.active {
+  background-color: $active;
+}
+
+.inactive {
+  background-color: $inactive;
 }

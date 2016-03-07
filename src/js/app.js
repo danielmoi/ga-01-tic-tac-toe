@@ -132,3 +132,13 @@ $(document).on('click', '.square', function() {
 $('.reset').on('click', function() {
   reset();
 });
+
+$('.players1').on('click', function() {
+  $('.players1').addClass('active');
+  $('.players2').removeClass('active');
+});
+
+$('.players2').on('click', function() {
+  $('.players2').addClass('active');
+  $('.players1').removeClass('active');
+});

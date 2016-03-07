@@ -24,14 +24,6 @@ body {
   background-size: cover;
 }
 
-.active {
-  background-color: #3498db;
-}
-
-.inactive {
-  background-color: #ecf0f1;
-}
-
 .header {
   text-align: center;
   margin-top: 30px;
@@ -68,6 +60,7 @@ body {
   text-align: center;
   line-height: 50px;
   cursor: pointer;
+  background-color: #ecf0f1;
 }
 
 .players1 {
@@ -145,4 +138,12 @@ button {
 }
 button:focus {
   outline: none;
+}
+
+.active {
+  background-color: #3498db;
+}
+
+.inactive {
+  background-color: #ecf0f1;
 }
