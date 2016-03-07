@@ -1,3 +1,11 @@
+$(document).ready(function () {
+  startGame();
+});
+
+var startGame = function() {
+  updateDisplay();
+};
+
 $(document).on('click', '.square', function() {
   console.log($(this)[0].id);
   var id = parseInt($(this)[0].id);
@@ -32,6 +40,7 @@ var play = function(id) {
   console.log(arrPlayer);
   currentPlayer = switchTurn();
   console.log(currentPlayer);
+  updateDisplay();
 };
 
 
@@ -43,6 +52,10 @@ var switchTurn = function() {
   else {
     return 'player1';
   }
+};
+
+var updateDisplay = function() {
+  $('.current-player').text(currentPlayer);
 };
 
 var checkWin = function() {
