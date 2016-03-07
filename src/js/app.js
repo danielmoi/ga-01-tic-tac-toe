@@ -8,6 +8,7 @@ $(document).on('click', '.square', function() {
 var gameStarted;
 
 var arrPlayer = [];
+var currentPlayer = 'player1';
 
 var arrWinningCombos = [
   // rows
@@ -29,6 +30,27 @@ var play = function(id) {
   arrPlayer.push(id);
   arrPlayer.sort();
   console.log(arrPlayer);
+  currentPlayer = switchTurn();
+  switchTurn();
+  console.log(currentPlayer);
+};
+
+var switchTurn = function() {
+  if (currentPlayer === 'player1') {
+    currentPlayer = 'player2';
+  }
+  else {
+    currentPlayer = 'player1';
+  }
+};
+
+var switchTurn = function() {
+  if (currentPlayer === 'player1') {
+    return 'player2';
+  }
+  else {
+    return 'player1';
+  }
 };
 
 var checkWin = function() {
