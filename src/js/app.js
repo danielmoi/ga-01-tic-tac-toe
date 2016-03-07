@@ -3,43 +3,28 @@ $(document).ready(function() {
 });
 
 var startGame = function() {
-  updateDisplay();
+  updateInstructions();
 };
 
 $(document).on('click', '.square', function() {
-  console.log($(this)[0].id);
+  // console.log($(this)[0].id);
   var id = parseInt($(this)[0].id);
   play(id);
-  drawMarker(id);
 });
 
 var gameActive = true;
-
-var arrPlayer = [];
 
 var players = {
   player1: {
     name: 'Player 1',
     tile: 'X',
-    moves: []
   },
   player2: {
     name: 'Player 2',
     tile: 'O',
-    moves: []
-
   }
 };
 var currentPlayer = players.player1.name;
-
-var getCurrentPlayerObject = function() {
-  if (currentPlayer === 'Player 1') {
-    return players.player1;
-  } else {
-    return players.player2;
-  }
-};
-
 
 var arrWinningCombos = [
   // rows
@@ -57,16 +42,32 @@ var arrWinningCombos = [
   [2, 4, 6]
 ];
 
+var arrPlayedMoves = ['nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody'];
+
+var updateInstructions = function() {
+  $('.current-player').text(currentPlayer);
+};
+
+var getCurrentPlayerObject = function() {
+  if (currentPlayer === 'Player 1') {
+    return players.player1;
+  } else {
+    return players.player2;
+  }
+};
+
 var play = function(id) {
-  var currentPlayerObject = getCurrentPlayerObject();
-  currentPlayerObject.moves.push(id);
-  currentPlayerObject.moves.sort();
-  console.log(currentPlayerObject.moves);
-  checkWin(currentPlayerObject);
   if (gameActive) {
+    var currentPlayerObject = getCurrentPlayerObject();
+
+    arrPlayedMoves[id] = currentPlayerObject.name;
+
+    console.log(arrPlayedMoves);
+    checkWin(currentPlayerObject);
+    drawMarker(id);
     currentPlayer = switchTurn();
     console.log(currentPlayer);
-    updateDisplay();
+    updateInstructions();
   }
 
 };
@@ -87,21 +88,18 @@ var switchTurn = function() {
   }
 };
 
-var updateDisplay = function() {
-  $('.current-player').text(currentPlayer);
+
+var checkWin = function(currentPlayerObject) {
+  arrWinningCombos.forEach(function(element) {
+    // console.log(arrPlayedMoves[element[0]], arrPlayedMoves[element[1]], arrPlayedMoves[element[2]]);
+    if (arrPlayedMoves[element[0]] !== 'nobody' && arrPlayedMoves[element[0]] === arrPlayedMoves[element[1]] && arrPlayedMoves[element[1]] === arrPlayedMoves[element[2]]) {
+      console.log('Winner: ' + currentPlayerObject.name);
+      declareWinner(currentPlayerObject.name);
+      gameActive = false;
+    }
+  });
 };
 
 var declareWinner = function(name) {
   $('.message').text('Winner: ' + name);
-};
-
-var checkWin = function(currentPlayerObject) {
-  arrWinningCombos.forEach(function(element) {
-    // console.log(element.join('') === arrPlayer.join(''));
-    if (element.join('') === currentPlayerObject.moves.join('')) {
-      console.log('Winner', currentPlayerObject.name);
-      gameActive = false;
-      declareWinner(currentPlayerObject.name);
-    }
-  });
 };
