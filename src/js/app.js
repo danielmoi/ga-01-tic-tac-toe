@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   startGame();
 });
 
@@ -11,24 +11,35 @@ $(document).on('click', '.square', function() {
   var id = parseInt($(this)[0].id);
   play(id);
   drawMarker(id);
-  checkWin();
 });
 
-var gameStarted;
+var gameActive = true;
 
 var arrPlayer = [];
 
 var players = {
   player1: {
     name: 'Player 1',
-    tile: 'X'
+    tile: 'X',
+    moves: []
   },
   player2: {
     name: 'Player 2',
-    tile: 'O'
+    tile: 'O',
+    moves: []
+
   }
 };
 var currentPlayer = players.player1.name;
+
+var getCurrentPlayerObject = function() {
+  if (currentPlayer === 'Player 1') {
+    return players.player1;
+  } else {
+    return players.player2;
+  }
+};
+
 
 var arrWinningCombos = [
   // rows
@@ -47,28 +58,31 @@ var arrWinningCombos = [
 ];
 
 var play = function(id) {
-  arrPlayer.push(id);
-  arrPlayer.sort();
-  console.log(arrPlayer);
-  currentPlayer = switchTurn();
-  console.log(currentPlayer);
-  updateDisplay();
+  var currentPlayerObject = getCurrentPlayerObject();
+  currentPlayerObject.moves.push(id);
+  currentPlayerObject.moves.sort();
+  console.log(currentPlayerObject.moves);
+  checkWin(currentPlayerObject);
+  if (gameActive) {
+    currentPlayer = switchTurn();
+    console.log(currentPlayer);
+    updateDisplay();
+  }
+
 };
 
 var drawMarker = function(id) {
   if (currentPlayer === 'Player 1') {
-    $('#'+id + '> .marker').text(players.player1.tile);
-  }
-  else {
-    $('#'+id + '> .marker').text(players.player2.tile);
+    $('#' + id + '> .marker').text(players.player1.tile);
+  } else {
+    $('#' + id + '> .marker').text(players.player2.tile);
   }
 };
 
 var switchTurn = function() {
   if (currentPlayer === 'Player 1') {
     return 'Player 2';
-  }
-  else {
+  } else {
     return 'Player 1';
   }
 };
@@ -77,11 +91,17 @@ var updateDisplay = function() {
   $('.current-player').text(currentPlayer);
 };
 
-var checkWin = function() {
+var declareWinner = function(name) {
+  $('.message').text('Winner: ' + name);
+};
+
+var checkWin = function(currentPlayerObject) {
   arrWinningCombos.forEach(function(element) {
     // console.log(element.join('') === arrPlayer.join(''));
-    if (element.join('') === arrPlayer.join('')) {
-      console.log('win');
+    if (element.join('') === currentPlayerObject.moves.join('')) {
+      console.log('Winner', currentPlayerObject.name);
+      gameActive = false;
+      declareWinner(currentPlayerObject.name);
     }
   });
 };
