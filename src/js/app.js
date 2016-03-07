@@ -57,10 +57,10 @@ var play = function(id) {
 
 var drawMarker = function(id) {
   if (currentPlayer === 'Player 1') {
-    $('#'+id).text(players.player1.tile);
+    $('#'+id + '> .marker').text(players.player1.tile);
   }
   else {
-    $('#'+id).text(players.player2.tile);
+    $('#'+id + '> .marker').text(players.player2.tile);
   }
 };
 

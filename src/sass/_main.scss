@@ -39,10 +39,17 @@ body {
   border: 1px solid gray;
   cursor: pointer;
   position: relative;
-
 }
 
 
+.marker {
+  line-height: 50px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 1.5em;
+  font-weight: 900;
+}
 
 
 // ELEMENTS

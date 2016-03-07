@@ -46,6 +46,15 @@ body {
   position: relative;
 }
 
+.marker {
+  line-height: 50px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
 input {
   padding: 10px;
   background-color: white;
