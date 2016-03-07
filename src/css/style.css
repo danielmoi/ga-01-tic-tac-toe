@@ -158,6 +158,10 @@ body {
   text-align: center;
 }
 
+.tile-win {
+  color: #2ecc71;
+}
+
 input {
   padding: 10px;
   background-color: white;
@@ -182,6 +186,21 @@ button {
 }
 button:focus {
   outline: none;
+}
+
+.reset-button {
+  background-color: #ecf0f1;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  border: 1px solid #ecf0f1;
+  color: gray;
+}
+
+.reset-action {
+  background-color: #2ecc71;
+  color: white;
+  border: 1px solid #2ecc71;
 }
 
 .start-button {

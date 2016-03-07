@@ -100,11 +100,24 @@ var checkWin = function(currentPlayerObject) {
   arrWinningCombos.forEach(function(element) {
     // console.log(arrPlayedMoves[element[0]], arrPlayedMoves[element[1]], arrPlayedMoves[element[2]]);
     if (arrPlayedMoves[element[0]] !== 'nobody' && arrPlayedMoves[element[0]] === arrPlayedMoves[element[1]] && arrPlayedMoves[element[1]] === arrPlayedMoves[element[2]]) {
-      console.log('Winner: ' + currentPlayerObject.name);
-      displayMessage(currentPlayerObject.name + ' wins!');
-      gameActive = false;
+      gameOver(currentPlayerObject);
     }
   });
+};
+
+var gameOver = function(currentPlayerObject) {
+  console.log('Winner: ' + currentPlayerObject.name);
+  for (var i = 0; i < arrPlayedMoves.length; i++) {
+    if (arrPlayedMoves[i] === currentPlayerObject.name) {
+      $('#' + i + '> .marker').addClass('tile-win');
+    }
+  }
+
+
+
+  displayMessage(currentPlayerObject.name + ' wins!');
+  $('.reset-button').addClass('reset-action');
+  gameActive = false;
 };
 
 var displayMessage = function(str) {
@@ -119,6 +132,7 @@ var reset = function() {
 
   // reset text on screen
   $('.marker').text('');
+  $('.marker').removeClass('tile-win');
   $('.message').text('');
 
   // reset array
@@ -140,8 +154,9 @@ $(document).on('click', '.square', function() {
 });
 
 // Game Reset
-$('.reset').on('click', function() {
+$('.reset-button').on('click', function() {
   reset();
+  $('.console').show();
 });
 
 // Console Nav Pills
@@ -165,5 +180,12 @@ $('.switch').on('click', function() {
     players.player2.tile = 'O';
   }
   updateTiles();
+
+});
+
+// Console Play
+$('.start-button').on('click', function() {
+  $('.console').hide();
+  $('.reset-button').removeClass('reset-action');
 
 });

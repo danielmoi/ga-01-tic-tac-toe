@@ -144,6 +144,11 @@ body {
   height: 100px;
   text-align: center;
 }
+
+.tile-win {
+  color: $action;
+}
+
 // ELEMENTS
 input {
   padding: 10px;
@@ -170,6 +175,20 @@ button {
   }
 }
 
+.reset-button {
+  background-color: $inactive;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  border: 1px solid $inactive;
+  color: gray;
+}
+
+.reset-action {
+  background-color: $action;
+  color: white;
+  border: 1px solid $action;
+}
 .start-button {
   background-color: $action;
   border: 1px solid $action;
