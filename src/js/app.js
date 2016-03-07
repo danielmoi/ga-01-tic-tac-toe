@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 var startGame = function() {
   updateInstructions();
+  updateTiles();
 };
 
 var gameActive = true;
@@ -39,7 +40,16 @@ var arrWinningCombos = [
 var arrPlayedMoves = ['nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody'];
 
 var updateInstructions = function() {
-  displayMessage('Current player: '+ currentPlayer);
+  displayMessage('Current player: ' + currentPlayer);
+};
+
+var updateTiles = function() {
+  $('.player1-tile').text(players.player1.tile);
+
+  $('.player2-tile').text(players.player2.tile);
+  console.log('tiles updated');
+
+
 };
 
 var getCurrentPlayerObject = function() {
@@ -122,17 +132,19 @@ var reset = function() {
 
 // USER INTERFACE
 
+// Game Play
 $(document).on('click', '.square', function() {
   // console.log($(this)[0].id);
   var id = parseInt($(this)[0].id);
   play(id);
 });
 
-
+// Game Reset
 $('.reset').on('click', function() {
   reset();
 });
 
+// Console Nav Pills
 $('.players1').on('click', function() {
   $('.players1').addClass('active');
   $('.players2').removeClass('active');
@@ -141,4 +153,17 @@ $('.players1').on('click', function() {
 $('.players2').on('click', function() {
   $('.players2').addClass('active');
   $('.players1').removeClass('active');
+});
+
+// Console switch
+$('.switch').on('click', function() {
+  if (players.player1.tile === 'X') {
+    players.player1.tile = 'O';
+    players.player2.tile = 'X';
+  } else {
+    players.player1.tile = 'X';
+    players.player2.tile = 'O';
+  }
+  updateTiles();
+
 });
