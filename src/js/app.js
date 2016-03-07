@@ -70,6 +70,8 @@ var play = function(id) {
     checkWin(currentPlayerObject);
     drawMarker(id);
 
+
+
     if (gameActive) {
       currentPlayer = switchTurn();
       console.log(currentPlayer);
@@ -100,24 +102,34 @@ var checkWin = function(currentPlayerObject) {
   arrWinningCombos.forEach(function(element) {
     // console.log(arrPlayedMoves[element[0]], arrPlayedMoves[element[1]], arrPlayedMoves[element[2]]);
     if (arrPlayedMoves[element[0]] !== 'nobody' && arrPlayedMoves[element[0]] === arrPlayedMoves[element[1]] && arrPlayedMoves[element[1]] === arrPlayedMoves[element[2]]) {
-      gameOver(currentPlayerObject);
+      gameOver(currentPlayerObject, 'win');
+    }
+
+    if (arrPlayedMoves.indexOf('nobody') === -1) {
+      gameOver(currentPlayerObject, 'tie');
     }
   });
 };
 
-var gameOver = function(currentPlayerObject) {
-  console.log('Winner: ' + currentPlayerObject.name);
-  for (var i = 0; i < arrPlayedMoves.length; i++) {
-    if (arrPlayedMoves[i] === currentPlayerObject.name) {
-      $('#' + i + '> .marker').addClass('tile-win');
-    }
-  }
-
-
-
-  displayMessage(currentPlayerObject.name + ' wins!');
+var gameOver = function(currentPlayerObject, result) {
   $('.reset-button').addClass('reset-action');
   gameActive = false;
+
+  if (result === 'win') {
+    console.log('Winner: ' + currentPlayerObject.name);
+    for (var i = 0; i < arrPlayedMoves.length; i++) {
+      if (arrPlayedMoves[i] === currentPlayerObject.name) {
+        $('#' + i + '> .marker').addClass('tile-win');
+      }
+    }
+    displayMessage(currentPlayerObject.name + ' wins!');
+  }
+  else {
+    console.log('TIE!');
+    displayMessage('It\'s a tie!');
+
+  }
+
 };
 
 var displayMessage = function(str) {
