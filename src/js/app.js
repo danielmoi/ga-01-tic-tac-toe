@@ -6,12 +6,6 @@ var startGame = function() {
   updateInstructions();
 };
 
-$(document).on('click', '.square', function() {
-  // console.log($(this)[0].id);
-  var id = parseInt($(this)[0].id);
-  play(id);
-});
-
 var gameActive = true;
 
 var players = {
@@ -65,9 +59,12 @@ var play = function(id) {
     console.log(arrPlayedMoves);
     checkWin(currentPlayerObject);
     drawMarker(id);
-    currentPlayer = switchTurn();
-    console.log(currentPlayer);
-    updateInstructions();
+
+    if (gameActive) {
+      currentPlayer = switchTurn();
+      console.log(currentPlayer);
+      updateInstructions();
+    }
   }
 
 };
@@ -103,3 +100,35 @@ var checkWin = function(currentPlayerObject) {
 var declareWinner = function(name) {
   $('.message').text('Winner: ' + name);
 };
+
+// Reset
+var reset = function() {
+
+  // allow game to play
+  gameActive = true;
+
+  // reset text on screen
+  $('.marker').text('');
+  $('.message').text('');
+
+  // reset array
+  for (var i = 0; i < arrPlayedMoves.length; i++) {
+    arrPlayedMoves[i] = 'nobody';
+  }
+
+  // reset instructions
+  updateInstructions();
+};
+
+// USER INTERFACE
+
+$(document).on('click', '.square', function() {
+  // console.log($(this)[0].id);
+  var id = parseInt($(this)[0].id);
+  play(id);
+});
+
+
+$('.reset').on('click', function() {
+  reset();
+});
