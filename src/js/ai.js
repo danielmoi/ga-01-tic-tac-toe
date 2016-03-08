@@ -9,14 +9,15 @@ var ai = function() {
   var move;
 
   do {
-    compMove = randomNumber();
+    move = randomNumber();
     // console.log(compMove);
   }
-  while (arrPlayedMoves[compMove] !== 'nobody');
+  while (arrPlayedMoves[move] !== 'nobody');
+  console.log(move);
 
   return move;
 };
 
-compMove = ai();
+// compMove = ai();
 
 // console.log('from AI');

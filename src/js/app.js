@@ -16,7 +16,7 @@ var players = {
     tile: 'X',
   },
   player2: {
-    name: 'Player 2',
+    name: 'Computer',
     tile: 'O',
   }
 };
@@ -72,9 +72,15 @@ var play = function(move) {
     drawMarker(move);
 
     if (gameActive) {
-      currentPlayer = switchTurn();
+      currentPlayer = switchTurn(currentPlayerObject);
       console.log(currentPlayer);
       updateInstructions();
+    }
+    if (currentPlayer === 'Computer') {
+      console.log('COMPUTER!!');
+      compMove = ai();
+      play(compMove);
+      // debugger;
     }
   }
 };
@@ -99,11 +105,11 @@ var drawMarker = function(move) {
   }
 };
 
-var switchTurn = function() {
-  if (currentPlayer === 'Player 1') {
-    return 'Player 2';
+var switchTurn = function(obj) {
+  if (currentPlayer === players.player1.name) {
+    return players.player2.name;
   } else {
-    return 'Player 1';
+    return players.player1.name;
   }
 };
 
