@@ -5,6 +5,7 @@ $(document).ready(function() {
 var startGame = function() {
   updateInstructions();
   updateTiles();
+  $('.control').hide();
 };
 
 var gameActive = true;
@@ -169,6 +170,7 @@ $(document).on('click', '.square', function() {
 $('.reset-button').on('click', function() {
   reset();
   $('.console').show();
+  $('.control').hide();
 });
 
 // Console Nav Pills
@@ -199,5 +201,6 @@ $('.switch').on('click', function() {
 $('.start-button').on('click', function() {
   $('.console').hide();
   $('.reset-button').removeClass('reset-action');
+  $('.control').show();
 
 });
