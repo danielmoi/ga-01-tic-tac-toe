@@ -103,7 +103,7 @@ var checkWin = function(currentPlayerObject) {
   jQuery.each(arrWinningCombos, function(key, value) {
     // console.log(arrPlayedMoves[element[0]], arrPlayedMoves[element[1]], arrPlayedMoves[element[2]]);
     if (arrPlayedMoves[value[0]] !== 'nobody' && arrPlayedMoves[value[0]] === arrPlayedMoves[value[1]] && arrPlayedMoves[value[1]] === arrPlayedMoves[value[2]]) {
-      gameOver(currentPlayerObject, 'win');
+      gameOver(currentPlayerObject, 'win', value);
       return false;
     }
 
@@ -114,7 +114,7 @@ var checkWin = function(currentPlayerObject) {
   });
 };
 
-var gameOver = function(currentPlayerObject, result) {
+var gameOver = function(currentPlayerObject, result, winningCombo) {
   $('.reset-button').addClass('reset-action');
   gameActive = false;
 
@@ -122,13 +122,15 @@ var gameOver = function(currentPlayerObject, result) {
     console.log('Winner: ' + currentPlayerObject.name);
     for (var i = 0; i < arrPlayedMoves.length; i++) {
       if (arrPlayedMoves[i] === currentPlayerObject.name) {
-        $('#' + i + '> .marker').addClass('tile-win');
+        console.log(winningCombo);
+        for (var j = 0; j < winningCombo.length; j++) {
+          $('#' + winningCombo[j] + '> .marker').addClass('tile-win');
+        }
       }
     }
     displayMessage(currentPlayerObject.name + ' wins!');
     console.log('WIN!');
-  }
-  else {
+  } else {
     console.log('TIE!');
     displayMessage('It\'s a tie!');
 
