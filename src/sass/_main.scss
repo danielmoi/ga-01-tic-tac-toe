@@ -69,7 +69,7 @@ body {
 .mode-options {
   margin: 20px auto;
   border: 1px solid $active;
-  padding: 2em;
+  padding: 1em;
   width: 80%;
   height: 200px;
   border-radius: 1em;
@@ -90,8 +90,8 @@ body {
 .switch,
 .player2 {
   display: inline-block;
-  padding: 1em;
-  width: 80px;
+  padding: 10px;
+  width: 45px;
 }
 
 .switch {
@@ -105,9 +105,10 @@ body {
 .tile {
   padding: 10px 0;
   margin: 10px;
-  font-size: 3em;
+  font-size: 1em;
   font-weight: 900;
 }
+
 
 // BOARD
 .board {
@@ -209,6 +210,8 @@ button {
 
 
 @media screen and (min-width: 600px) {
+
+  // BOARD
   .marker {
     line-height: 80px;
     font-size: 3em;
@@ -217,5 +220,25 @@ button {
     width: 80px;
     height: 80px;
     margin: 5px;
+  }
+
+  // CONSOLE
+  .mode-options {
+    padding: 2em;
+  }
+
+  .tile {
+    padding: 10px 0;
+    margin: 1em;
+    font-size: 3em;
+    font-weight: 900;
+  }
+
+
+  .player1,
+  .switch,
+  .player2 {
+    padding: 1em;
+    width: 80px;
   }
 }

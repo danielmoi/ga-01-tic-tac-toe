@@ -79,7 +79,10 @@ var play = function(move) {
     if (currentPlayer === 'Computer') {
       console.log('COMPUTER!!');
       compMove = ai();
-      play(compMove);
+      var delayMove = function() {
+        play(compMove);
+      };
+      timerID = setTimeout(delayMove, 900);
       // debugger;
     }
   }
@@ -189,14 +192,20 @@ $('.reset-button').on('click', function() {
 });
 
 // Console Nav Pills
-$('.players1').on('click', function() {
-  $('.players1').addClass('active');
-  $('.players2').removeClass('active');
+$('.solo').on('click', function() {
+  $('.solo').addClass('active');
+  $('.pairs').removeClass('active');
+  $('.solo-options').show();
+  $('.pairs-options').hide();
+  players.player2.name = 'Computer';
 });
 
-$('.players2').on('click', function() {
-  $('.players2').addClass('active');
-  $('.players1').removeClass('active');
+$('.pairs').on('click', function() {
+  $('.pairs').addClass('active');
+  $('.solo').removeClass('active');
+  $('.pairs-options').show();
+  $('.solo-options').hide();
+  players.player2.name = 'Player 2';
 });
 
 // Console switch
