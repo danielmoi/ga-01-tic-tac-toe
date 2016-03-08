@@ -218,3 +218,16 @@ button:focus {
 .inactive {
   background-color: #ecf0f1;
 }
+
+@media screen and (min-width: 600px) {
+  .marker {
+    line-height: 80px;
+    font-size: 3em;
+  }
+
+  .square {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+  }
+}
