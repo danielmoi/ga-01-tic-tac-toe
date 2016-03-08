@@ -20,6 +20,9 @@ var players = {
     tile: 'O',
   }
 };
+
+var gameMode = 'pairs';
+
 var currentPlayer = players.player1.name;
 
 var arrWinningCombos = [
@@ -57,15 +60,16 @@ var getCurrentPlayerObject = function() {
   }
 };
 
-var play = function(id) {
-  if (gameActive) {
+var play = function(move) {
+  // is this double conditional okay?
+  if (gameActive && available(move)) {
+
     var currentPlayerObject = getCurrentPlayerObject();
 
-    arrPlayedMoves[id] = currentPlayerObject.name;
+    arrPlayedMoves[move] = currentPlayerObject.name;
 
-    console.log(arrPlayedMoves);
     checkWin(currentPlayerObject);
-    drawMarker(id);
+    drawMarker(move);
 
     if (gameActive) {
       currentPlayer = switchTurn();
@@ -75,11 +79,23 @@ var play = function(id) {
   }
 };
 
-var drawMarker = function(id) {
+var available = function(move) {
+  console.log('move: ', move, arrPlayedMoves[move]);
+  if (arrPlayedMoves[move] !== 'nobody') {
+    console.log('occupied');
+    return false;
+  }
+  else {
+    console.log('available!');
+    return true;
+  }
+};
+
+var drawMarker = function(move) {
   if (currentPlayer === 'Player 1') {
-    $('#' + id + '> .marker').text(players.player1.tile);
+    $('#' + move + '> .marker').text(players.player1.tile);
   } else {
-    $('#' + id + '> .marker').text(players.player2.tile);
+    $('#' + move + '> .marker').text(players.player2.tile);
   }
 };
 
@@ -155,9 +171,8 @@ var reset = function() {
 
 // Game Play
 $(document).on('click', '.square', function() {
-  // console.log($(this)[0].id);
-  var id = parseInt($(this)[0].id);
-  play(id);
+  var move = parseInt($(this)[0].id);
+  play(move);
 });
 
 // Game Reset
