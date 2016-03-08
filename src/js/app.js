@@ -78,8 +78,13 @@ var play = function(move) {
     }
     if (currentPlayer === 'Computer') {
       console.log('COMPUTER!!');
+
+      // Is it redundant to have the variable compMove?
+      // No, it's actually better, because it allows us to use compMove elsewhere without needing to call `ai` again.
       compMove = ai();
       var delayMove = function() {
+
+        // Should this be play(compMove(ai())? >> NO
         play(compMove);
       };
       timerID = setTimeout(delayMove, 900);
