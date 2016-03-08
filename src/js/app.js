@@ -100,14 +100,16 @@ var switchTurn = function() {
 
 
 var checkWin = function(currentPlayerObject) {
-  arrWinningCombos.forEach(function(element) {
+  jQuery.each(arrWinningCombos, function(key, value) {
     // console.log(arrPlayedMoves[element[0]], arrPlayedMoves[element[1]], arrPlayedMoves[element[2]]);
-    if (arrPlayedMoves[element[0]] !== 'nobody' && arrPlayedMoves[element[0]] === arrPlayedMoves[element[1]] && arrPlayedMoves[element[1]] === arrPlayedMoves[element[2]]) {
+    if (arrPlayedMoves[value[0]] !== 'nobody' && arrPlayedMoves[value[0]] === arrPlayedMoves[value[1]] && arrPlayedMoves[value[1]] === arrPlayedMoves[value[2]]) {
       gameOver(currentPlayerObject, 'win');
+      return false;
     }
 
     if (arrPlayedMoves.indexOf('nobody') === -1) {
       gameOver(currentPlayerObject, 'tie');
+      return false;
     }
   });
 };
@@ -124,6 +126,7 @@ var gameOver = function(currentPlayerObject, result) {
       }
     }
     displayMessage(currentPlayerObject.name + ' wins!');
+    console.log('WIN!');
   }
   else {
     console.log('TIE!');
