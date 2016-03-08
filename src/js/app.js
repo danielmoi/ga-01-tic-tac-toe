@@ -120,13 +120,9 @@ var gameOver = function(currentPlayerObject, result, winningCombo) {
 
   if (result === 'win') {
     console.log('Winner: ' + currentPlayerObject.name);
-    for (var i = 0; i < arrPlayedMoves.length; i++) {
-      if (arrPlayedMoves[i] === currentPlayerObject.name) {
-        console.log(winningCombo);
-        for (var j = 0; j < winningCombo.length; j++) {
-          $('#' + winningCombo[j] + '> .marker').addClass('tile-win');
-        }
-      }
+
+    for (var j = 0; j < winningCombo.length; j++) {
+      $('#' + winningCombo[j] + '> .marker').addClass('tile-win');
     }
     displayMessage(currentPlayerObject.name + ' wins!');
     console.log('WIN!');
@@ -135,8 +131,28 @@ var gameOver = function(currentPlayerObject, result, winningCombo) {
     displayMessage('It\'s a tie!');
 
   }
-
 };
+// var gameOver = function(currentPlayerObject, result, winningCombo) {
+//   $('.reset-button').addClass('reset-action');
+//   gameActive = false;
+//
+//   if (result === 'win') {
+//     console.log('Winner: ' + currentPlayerObject.name);
+//     for (var i = 0; i < arrPlayedMoves.length; i++) {
+//       if (arrPlayedMoves[i] === currentPlayerObject.name) {
+//         for (var j = 0; j < winningCombo.length; j++) {
+//           $('#' + winningCombo[j] + '> .marker').addClass('tile-win');
+//         }
+//       }
+//     }
+//     displayMessage(currentPlayerObject.name + ' wins!');
+//     console.log('WIN!');
+//   } else {
+//     console.log('TIE!');
+//     displayMessage('It\'s a tie!');
+//
+//   }
+// };
 
 var displayMessage = function(str) {
   $('.message').text(str);
