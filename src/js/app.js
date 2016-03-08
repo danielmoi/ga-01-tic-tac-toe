@@ -46,11 +46,7 @@ var updateInstructions = function() {
 
 var updateTiles = function() {
   $('.player1-tile').text(players.player1.tile);
-
   $('.player2-tile').text(players.player2.tile);
-  console.log('tiles updated');
-
-
 };
 
 var getCurrentPlayerObject = function() {
@@ -71,15 +67,12 @@ var play = function(id) {
     checkWin(currentPlayerObject);
     drawMarker(id);
 
-
-
     if (gameActive) {
       currentPlayer = switchTurn();
       console.log(currentPlayer);
       updateInstructions();
     }
   }
-
 };
 
 var drawMarker = function(id) {
@@ -98,15 +91,16 @@ var switchTurn = function() {
   }
 };
 
-
 var checkWin = function(currentPlayerObject) {
   jQuery.each(arrWinningCombos, function(key, value) {
-    // console.log(arrPlayedMoves[element[0]], arrPlayedMoves[element[1]], arrPlayedMoves[element[2]]);
+
+    // WIN
     if (arrPlayedMoves[value[0]] !== 'nobody' && arrPlayedMoves[value[0]] === arrPlayedMoves[value[1]] && arrPlayedMoves[value[1]] === arrPlayedMoves[value[2]]) {
       gameOver(currentPlayerObject, 'win', value);
       return false;
     }
 
+    // TIE
     if (arrPlayedMoves.indexOf('nobody') === -1) {
       gameOver(currentPlayerObject, 'tie');
       return false;
@@ -121,6 +115,7 @@ var gameOver = function(currentPlayerObject, result, winningCombo) {
   if (result === 'win') {
     console.log('Winner: ' + currentPlayerObject.name);
 
+    // use arrWinningCombos to restrict number of tiles highlighted
     for (var j = 0; j < winningCombo.length; j++) {
       $('#' + winningCombo[j] + '> .marker').addClass('tile-win');
     }
@@ -129,30 +124,8 @@ var gameOver = function(currentPlayerObject, result, winningCombo) {
   } else {
     console.log('TIE!');
     displayMessage('It\'s a tie!');
-
   }
 };
-// var gameOver = function(currentPlayerObject, result, winningCombo) {
-//   $('.reset-button').addClass('reset-action');
-//   gameActive = false;
-//
-//   if (result === 'win') {
-//     console.log('Winner: ' + currentPlayerObject.name);
-//     for (var i = 0; i < arrPlayedMoves.length; i++) {
-//       if (arrPlayedMoves[i] === currentPlayerObject.name) {
-//         for (var j = 0; j < winningCombo.length; j++) {
-//           $('#' + winningCombo[j] + '> .marker').addClass('tile-win');
-//         }
-//       }
-//     }
-//     displayMessage(currentPlayerObject.name + ' wins!');
-//     console.log('WIN!');
-//   } else {
-//     console.log('TIE!');
-//     displayMessage('It\'s a tie!');
-//
-//   }
-// };
 
 var displayMessage = function(str) {
   $('.message').text(str);
@@ -223,5 +196,4 @@ $('.start-button').on('click', function() {
   $('.console').hide();
   $('.reset-button').removeClass('reset-action');
   $('.control').show();
-
 });
