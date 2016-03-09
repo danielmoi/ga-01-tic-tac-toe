@@ -16,7 +16,7 @@ var players = {
     tile: 'X',
   },
   player2: {
-    name: 'Computer',
+    name: 'Player 2',
     tile: 'O',
   }
 };
