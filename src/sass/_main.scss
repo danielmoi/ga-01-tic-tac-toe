@@ -13,8 +13,7 @@ body {
   background-image: url("../img/lake-us.jpeg");
   // background-size: cover;
 }
-
-
+// TODO: Fix layout for mobile
 // TYPOGRAPHY
 .header {
   text-align: center;
@@ -28,7 +27,7 @@ body {
 // CONSOLE
 .console {
   z-index: 2;
-  max-width: 50%;
+  max-width: 90%;
   height: 400px;
   background-color: rgba(255,255,255,1.0);
   border-radius: 1em;
@@ -37,9 +36,10 @@ body {
   position: fixed;
   left: 0;
   right: 0;
-
+  @media screen and (min-width: 600px) {
+    max-width: 50%;
+  }
 }
-
 .game-mode {
   text-align: center;
   margin-top: 20px;
@@ -53,19 +53,16 @@ body {
   cursor: pointer;
   background-color: $inactive;
 }
-
 .solo {
   margin-left: -4px;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
-
 }
 .pairs {
   margin-left: -4px;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
 }
-
 .mode-options {
   margin: 20px auto;
   border: 1px solid $active;
@@ -73,43 +70,37 @@ body {
   width: 80%;
   height: 200px;
   border-radius: 1em;
+  @media screen and (min-width: 600px) {
+      padding: 2em;
+  }
 }
-
 .start-container {
   position: absolute;
   bottom: 20px;
   left: 0;
   right: 0;
 }
-
 .solo-options {
   display: none;
 }
-
 .player1,
 .switch,
 .player2 {
   display: inline-block;
-  padding: 10px;
+  padding: 10px 0;
   width: 45px;
+  @media screen and (min-width: 600px) {
+    padding: 1em;
+    width: 80px;
+  }
 }
-
 .switch {
   cursor: pointer;
 }
 .switch .fa {
-  font-size:1.5em;
+  font-size: 1.5em;
   color: $action;
 }
-
-.tile {
-  padding: 10px 0;
-  margin: 10px;
-  font-size: 1em;
-  font-weight: 900;
-}
-
-
 // BOARD
 .board {
   margin: 0 auto;
@@ -145,11 +136,32 @@ body {
   height: 100px;
   text-align: center;
 }
-
+@media screen and (min-width: 600px) {
+  .marker {
+    line-height: 80px;
+    font-size: 3em;
+  }
+  .square {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+  }
+}
 .tile-win {
   color: $action;
 }
-
+.tile {
+  padding: 10px 0;
+  margin: 10px 0;
+  font-size: 3em;
+  font-weight: 900;
+  @media screen and (min-width: 600px) {
+      padding: 10px 0;
+      margin: 10px;
+      font-size: 1em;
+      font-weight: 900;
+  }
+}
 // ELEMENTS
 input {
   padding: 10px;
@@ -175,7 +187,6 @@ button {
     outline: none;
   }
 }
-
 .reset-button {
   background-color: $inactive;
   border-radius: 50%;
@@ -184,7 +195,6 @@ button {
   border: 1px solid $inactive;
   color: gray;
 }
-
 .reset-action {
   background-color: $action;
   color: white;
@@ -197,48 +207,10 @@ button {
   width: 70px;
   border-radius: 50%;
 }
-
-
 // COLOURS
 .active {
   background-color: $active;
 }
-
 .inactive {
   background-color: $inactive;
-}
-
-
-@media screen and (min-width: 600px) {
-
-  // BOARD
-  .marker {
-    line-height: 80px;
-    font-size: 3em;
-  }
-  .square {
-    width: 80px;
-    height: 80px;
-    margin: 5px;
-  }
-
-  // CONSOLE
-  .mode-options {
-    padding: 2em;
-  }
-
-  .tile {
-    padding: 10px 0;
-    margin: 10px;
-    font-size: 3em;
-    font-weight: 900;
-  }
-
-
-  .player1,
-  .switch,
-  .player2 {
-    padding: 1em;
-    width: 80px;
-  }
 }
