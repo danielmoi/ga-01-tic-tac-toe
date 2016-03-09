@@ -10,6 +10,8 @@ var startGame = function() {
 
 var gameActive = true;
 
+var compBrain = 0;
+
 var players = {
   player1: {
     name: 'Player 1',
