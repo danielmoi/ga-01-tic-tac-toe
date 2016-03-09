@@ -10,7 +10,7 @@ var startGame = function() {
 
 var gameActive = true;
 
-var compBrain = 1;
+var compBrain = 2;
 
 var players = {
   player1: {
@@ -179,7 +179,7 @@ var reset = function() {
   $('.message').text('');
 
   // reset array
-  for (var i = 0; i < arrPlayedMoves.length; i++) {
+  for (var i = 0; i <= 8; i++) {
     arrPlayedMoves[i] = 'nobody';
   }
 
