@@ -167,6 +167,9 @@ var reset = function() {
   // allow game to play
   gameActive = true;
 
+  // reset currentPlayer to be player 1
+  currentPlayer = players.player1.name;
+
   // reset text on screen
   $('.marker').text('');
   $('.marker').removeClass('tile-win');
@@ -231,4 +234,5 @@ $('.start-button').on('click', function() {
   $('.console').hide();
   $('.reset-button').removeClass('reset-action');
   $('.control').show();
+  console.log(players.player1.name, players.player2.name);
 });
