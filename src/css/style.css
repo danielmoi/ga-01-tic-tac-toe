@@ -1,5 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Schoolbell);
 * {
-  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -22,15 +23,26 @@ body {
   background-image: url("../img/lake-us.jpeg");
 }
 
+h1 {
+  font-family: 'Schoolbell', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-size: 4em;
+  color: bisque;
+}
+
 .header {
   text-align: center;
   margin-top: 30px;
 }
 
 .container {
-  max-width: 50%;
+  max-width: 90%;
   margin: 0 auto;
   padding-top: 30px;
+}
+@media screen and (min-width: 600px) {
+  .container {
+    max-width: 50%;
+  }
 }
 
 .console {
@@ -193,7 +205,7 @@ body {
   .tile {
     padding: 10px 0;
     margin: 10px;
-    font-size: 1em;
+    font-size: 3em;
     font-weight: 900;
   }
 }

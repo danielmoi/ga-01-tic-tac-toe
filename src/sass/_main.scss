@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Schoolbell);
+
 * {
   margin: 0;
   padding: 0;
@@ -12,17 +14,29 @@ body {
 body {
   background-image: url("../img/lake-us.jpeg");
   // background-size: cover;
+  // font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
 }
 // TODO: Fix layout for mobile
 // TYPOGRAPHY
+h1 {
+  font-family: 'Schoolbell', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-size: 4em;
+  color: bisque;
+
+}
+
 .header {
   text-align: center;
   margin-top: 30px;
 }
+
 .container {
-  max-width: 50%;
+  max-width: 90%;
   margin: 0 auto;
   padding-top: 30px;
+  @media screen and (min-width: 600px) {
+    max-width: 50%;
+  }
 }
 // CONSOLE
 .console {
@@ -158,7 +172,7 @@ body {
   @media screen and (min-width: 600px) {
       padding: 10px 0;
       margin: 10px;
-      font-size: 1em;
+      font-size: 3em;
       font-weight: 900;
   }
 }
