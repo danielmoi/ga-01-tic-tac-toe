@@ -26,6 +26,10 @@ var ai = function() {
   }
 
   if (compBrain === 1) {
+    var move2;
+
+    // move is already defined?
+    // var move;
     arrWinningCombos.forEach(function(element) {
       console.log(element);
       // C-C-n
@@ -49,14 +53,17 @@ var ai = function() {
       else {
 
         console.log('else');
-        return randomMove();
+        move2 = randomMove();
       }
 
 
     });
+    return move2;
+
 
 
   }
+
 
 
 };
