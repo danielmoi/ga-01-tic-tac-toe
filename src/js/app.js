@@ -79,7 +79,7 @@ var play = function(move) {
       updateInstructions();
     }
     if (currentPlayer === 'Computer') {
-      console.log('COMPUTER!!');
+      // console.log('COMPUTER!!');
 
       // Is it redundant to have the variable compMove?
       // No, it's actually better, because it allows us to use compMove elsewhere without needing to call `ai` again.
@@ -96,13 +96,13 @@ var play = function(move) {
 };
 
 var available = function(move) {
-  console.log('move: ', move, arrPlayedMoves[move]);
+  // console.log('move: ', move, arrPlayedMoves[move]);
   if (arrPlayedMoves[move] !== 'nobody') {
-    console.log('occupied');
+    // console.log('occupied');
     return false;
   }
   else {
-    console.log('available!');
+    // console.log('available!');
     return true;
   }
 };
@@ -114,6 +114,7 @@ var drawMarker = function(move) {
     $('#' + move + '> .marker').text(players.player2.tile);
   }
 };
+
 
 var switchTurn = function(obj) {
   if (currentPlayer === players.player1.name) {

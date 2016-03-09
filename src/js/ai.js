@@ -12,12 +12,13 @@ var randomMove = function() {
     // console.log(compMove);
   }
   while (arrPlayedMoves[move] !== 'nobody');
-  console.log(move);
+  console.log('move: ' + move);
 
   return move;
 };
 
 var ai = function() {
+  // debugger;
 
   if (compBrain === 0) {
     var move = randomMove();
@@ -27,43 +28,71 @@ var ai = function() {
 
   if (compBrain === 1) {
     var move2;
+    console.log('move2: ');
 
-    // move is already defined?
-    // var move;
-    arrWinningCombos.forEach(function(element) {
-      console.log(element);
+
+    jQuery.each(arrWinningCombos, function(key, value) {
+
+
+      if (move2) {
+        return false;
+      }
+
+      console.log(value);
       // C-C-n
-      if (arrPlayedMoves[element[0]] === arrPlayedMoves[element[1]] && arrPlayedMoves[element[1]] === 'Computer' && arrPlayedMoves[element[2]] === 'nobody') {
+      if (arrPlayedMoves[value[0]] === arrPlayedMoves[value[1]] && arrPlayedMoves[value[1]] === 'Computer' && arrPlayedMoves[value[2]] === 'nobody') {
         console.log('C-C-n');
-        return element[2];
+        move2 = value[2];
+        return false;
       }
 
       // C-n-C
-      else if (arrPlayedMoves[element[0]] === arrPlayedMoves[element[2]] && arrPlayedMoves[element[2]] === 'Computer' && arrPlayedMoves[element[1]] === 'nobody') {
+      else if (arrPlayedMoves[value[0]] === arrPlayedMoves[value[2]] && arrPlayedMoves[value[2]] === 'Computer' && arrPlayedMoves[value[1]] === 'nobody') {
         console.log('C-n-C');
-        return element[1];
+        move2 = value[1];
+        return false;
       }
 
       // n-C-C
-      else if (arrPlayedMoves[element[1]] === arrPlayedMoves[element[2]] && arrPlayedMoves[element[2]] === 'Computer' && arrPlayedMoves[element[0]] === 'nobody') {
+      else if (arrPlayedMoves[value[1]] === arrPlayedMoves[value[2]] && arrPlayedMoves[value[2]] === 'Computer' && arrPlayedMoves[value[0]] === 'nobody') {
         console.log('n-C-C');
-        return element[0];
-      }
-
-      else {
+        move2 = value[0];
+        return false;
+      } else {
 
         console.log('else');
-        move2 = randomMove();
+        if (move2) {
+          return false;
+        } else {
+          move2 = randomMove();
+          // return false;
+
+        }
+        // return false;
       }
 
-
     });
+
     return move2;
+  }
+};
 
+// Block 2-in-a-row for Player 1
+var ai2 = function() {
 
-
+  // P-P-n
+  if (arrPlayedMoves[element[0]] === arrPlayedMoves[element[1]] && arrPlayedMoves[element[1]] === 'Player 1' && arrPlayedMoves[element[2]] === 'nobody') {
+    return element[2];
   }
 
+  // P-n-P
+  if (arrPlayedMoves[element[0]] === arrPlayedMoves[element[2]] && arrPlayedMoves[element[2]] === 'Player 1' && arrPlayedMoves[element[1]] === 'nobody') {
+    return element[1];
+  }
 
+  // n-P-P
+  if (arrPlayedMoves[element[1]] === arrPlayedMoves[element[2]] && arrPlayedMoves[element[2]] === 'Player 1' && arrPlayedMoves[element[0]] === 'nobody') {
+    return element[0];
+  }
 
 };
