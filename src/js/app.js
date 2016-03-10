@@ -10,7 +10,7 @@ var startGame = function() {
 
 var gameActive = true;
 
-var compBrain = 0;
+var compBrain = 'brainsVal0';
 
 var players = {
   player1: {
@@ -240,10 +240,20 @@ $('.switch').on('click', function() {
 
 });
 
+// Radio change
+$('.brains-container').on('change', function() {
+  compBrain = $('input[name="brainsGroup"]:checked').val();
+  console.log(compBrain);
+});
+
 // Console Play
 $('.start-button').on('click', function() {
   $('.console').hide();
   $('.reset-button').removeClass('reset-action');
   $('.control').show();
+
+
+
+
   console.log(players.player1.name, players.player2.name);
 });

@@ -25,7 +25,7 @@ var ai = function() {
   for (var i = 0; i < arrWinningCombos.length; i++) {
     // console.log(arrWinningCombos[i]);
 
-    if (compBrain === 2) {
+    if (compBrain === 'brainsVal2') {
       // PLAY TO WIN
       // C-C-n
       if (arrPlayedMoves[arrWinningCombos[i][0]] === arrPlayedMoves[arrWinningCombos[i][1]] && arrPlayedMoves[arrWinningCombos[i][1]] === 'Computer' && arrPlayedMoves[arrWinningCombos[i][2]] === 'nobody') {
@@ -49,7 +49,7 @@ var ai = function() {
       }
     }
 
-    if (compBrain === 2 || compBrain === 1) {
+    if (compBrain === 'brainsVal2' || compBrain === 'brainsVal1') {
       // STOP WIN
 
       // P-P-n
