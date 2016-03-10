@@ -116,10 +116,11 @@ h1 {
   position: relative;
 }
 
-.brains-container {
-  position: absolute;
-  right: 0;
-  top: 0;
+.brains0,
+.brains1,
+.brains2 {
+  display: inline;
+  margin: 0 10px;
 }
 
 .start-container {
