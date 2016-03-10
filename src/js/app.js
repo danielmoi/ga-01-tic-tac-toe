@@ -1,14 +1,14 @@
-$(document).ready(function() {
-  startGame();
-});
+///////////////////////////////////////////////////////////////////////////////
 
-var startGame = function() {
-  updateInstructions();
-  updateTiles();
-  $('.control').hide();
-};
+// TIC TAC TOE
 
+// by Daniel Moi 2016
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Variables - Game States
 var gameActive = true;
+var gameMode = 'pairs';
 
 var compBrain = 'brainsVal0';
 
@@ -23,10 +23,9 @@ var players = {
   }
 };
 
-var gameMode = 'pairs';
-
 var currentPlayer = players.player1.name;
 
+// Variables – Game Logic
 var arrWinningCombos = [
   // rows
   [0, 1, 2],
@@ -45,6 +44,9 @@ var arrWinningCombos = [
 
 var arrPlayedMoves = ['nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody', 'nobody'];
 
+///////////////////////////////////////////////////////////////////////////////
+
+// Functions - Render Screen
 var updateInstructions = function() {
   displayMessage('Current player: ' + currentPlayer);
 };
@@ -53,6 +55,22 @@ var updateTiles = function() {
   $('.player1-tile').text(players.player1.tile);
   $('.player2-tile').text(players.player2.tile);
 };
+
+var displayMessage = function(str) {
+  $('.message').text(str);
+};
+
+var drawMarker = function(move) {
+  if (currentPlayer === 'Player 1') {
+    $('#' + move + '> .marker').text(players.player1.tile);
+  } else {
+    $('#' + move + '> .marker').text(players.player2.tile);
+  }
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Functions - Game Logic
 
 var getCurrentPlayerObject = function() {
   if (currentPlayer === 'Player 1') {
@@ -63,7 +81,6 @@ var getCurrentPlayerObject = function() {
 };
 
 var play = function(move) {
-  // is this double conditional okay?
   if (gameActive && available(move)) {
 
     var currentPlayerObject = getCurrentPlayerObject();
@@ -79,42 +96,24 @@ var play = function(move) {
       updateInstructions();
     }
     if (currentPlayer === 'Computer') {
-      // console.log('COMPUTER!!');
 
-      // Is it redundant to have the variable compMove?
-      // No, it's actually better, because it allows us to use compMove elsewhere without needing to call `ai` again.
       compMove = ai();
-      var delayMove = function() {
 
-        // Should this be play(compMove(ai())? >> NO
+      var delayMove = function() {
         play(compMove);
       };
       timerID = setTimeout(delayMove, 900);
-      // debugger;
     }
   }
 };
 
 var available = function(move) {
-  // console.log('move: ', move, arrPlayedMoves[move]);
   if (arrPlayedMoves[move] !== 'nobody') {
-    // console.log('occupied');
     return false;
-  }
-  else {
-    // console.log('available!');
+  } else {
     return true;
   }
 };
-
-var drawMarker = function(move) {
-  if (currentPlayer === 'Player 1') {
-    $('#' + move + '> .marker').text(players.player1.tile);
-  } else {
-    $('#' + move + '> .marker').text(players.player2.tile);
-  }
-};
-
 
 var switchTurn = function(obj) {
   if (currentPlayer === players.player1.name) {
@@ -141,6 +140,9 @@ var checkWin = function(currentPlayerObject) {
   });
 };
 
+///////////////////////////////////////////////////////////////////////////////
+
+// Functions - End Game
 var gameOver = function(currentPlayerObject, result, winningCombo) {
   $('.reset-button').addClass('reset-action');
   gameActive = false;
@@ -160,9 +162,6 @@ var gameOver = function(currentPlayerObject, result, winningCombo) {
   }
 };
 
-var displayMessage = function(str) {
-  $('.message').text(str);
-};
 
 // Reset
 var reset = function() {
@@ -186,6 +185,8 @@ var reset = function() {
   // reset instructions
   updateInstructions();
 };
+
+///////////////////////////////////////////////////////////////////////////////
 
 // USER INTERFACE
 
@@ -252,8 +253,18 @@ $('.start-button').on('click', function() {
   $('.reset-button').removeClass('reset-action');
   $('.control').show();
 
-
-
-
   console.log(players.player1.name, players.player2.name);
 });
+
+///////////////////////////////////////////////////////////////////////////////
+
+// INITIATE GAME
+$(document).ready(function() {
+  startGame();
+});
+
+var startGame = function() {
+  updateInstructions();
+  updateTiles();
+  $('.control').hide();
+};
