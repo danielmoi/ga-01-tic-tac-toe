@@ -24,6 +24,8 @@ var players = {
   }
 };
 
+var winResult = false;
+
 var currentPlayer = players.player1.name;
 
 // Variables – Game Logic
@@ -132,16 +134,22 @@ var checkWin = function(currentPlayerObject) {
 
     // WIN
     if (arrPlayedMoves[value[0]] !== 'nobody' && arrPlayedMoves[value[0]] === arrPlayedMoves[value[1]] && arrPlayedMoves[value[1]] === arrPlayedMoves[value[2]]) {
+      winResult = true;
       gameOver(currentPlayerObject, 'win', value);
       return false;
     }
 
-    // TIE
-    if (arrPlayedMoves.indexOf('nobody') === -1) {
-      gameOver(currentPlayerObject, 'tie');
-      return false;
-    }
+
+
   });
+
+  // TIE
+  // Place this outside each loop
+  if (arrPlayedMoves.indexOf('nobody') === -1 && winResult === false) {
+    console.log(arrPlayedMoves);
+    gameOver(currentPlayerObject, 'tie');
+    return false;
+  }
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -172,6 +180,9 @@ var reset = function() {
 
   // allow game to play
   gameActive = true;
+
+  // reset winResult
+  winResult = false;
 
   // reset currentPlayer to be player 1
   currentPlayer = players.player1.name;
