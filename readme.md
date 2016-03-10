@@ -27,3 +27,5 @@ This is a Tic Tac Toe game that I made for my Project Zero, as part of my Web De
 1. http://api.jquery.com/jquery.each/
 2. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 3. http://fontawesome.io/
+
+Thanks for stopping by, and I hope you enjoying the game!
