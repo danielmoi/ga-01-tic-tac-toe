@@ -75,24 +75,31 @@ h1 {
   text-align: center;
   line-height: 50px;
   cursor: pointer;
-  background-color: #ecf0f1;
+  background: rgba(100, 100, 100, 0.2);
 }
 
-.solo {
+.solo-tab {
   margin-left: -4px;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
 }
 
-.pairs {
+.pairs-tab {
   margin-left: -4px;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
 }
 
+.solo-bkg {
+  background-color: #3498db;
+}
+
+.pairs-bkg {
+  background-color: #e74c3c;
+}
+
 .mode-options {
   margin: 20px auto;
-  border: 1px solid #3498db;
   padding: 1em;
   width: 80%;
   height: 200px;
@@ -104,6 +111,10 @@ h1 {
   }
 }
 
+.solo-options {
+  display: none;
+}
+
 .start-container {
   position: absolute;
   bottom: 20px;
@@ -111,8 +122,12 @@ h1 {
   right: 0;
 }
 
-.solo-options {
-  display: none;
+.solo-border {
+  border: 4px solid #3498db;
+}
+
+.pairs-border {
+  border: 4px solid #e74c3c;
 }
 
 .player1,
@@ -257,12 +272,4 @@ button:focus {
   height: 70px;
   width: 70px;
   border-radius: 50%;
-}
-
-.active {
-  background-color: #3498db;
-}
-
-.inactive {
-  background-color: #ecf0f1;
 }

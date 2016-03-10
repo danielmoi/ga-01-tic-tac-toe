@@ -65,21 +65,31 @@ h1 {
   text-align: center;
   line-height: 50px;
   cursor: pointer;
-  background-color: $inactive;
+  background: rgba(100,100,100,.2);
 }
-.solo {
+.solo-tab {
   margin-left: -4px;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
+
 }
-.pairs {
+.pairs-tab {
   margin-left: -4px;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
+
 }
+
+.solo-bkg {
+  background-color: $solo;
+}
+
+.pairs-bkg {
+  background-color: $pairs;
+}
+
 .mode-options {
   margin: 20px auto;
-  border: 1px solid $active;
   padding: 1em;
   width: 80%;
   height: 200px;
@@ -88,15 +98,27 @@ h1 {
       padding: 2em;
   }
 }
+.solo-options {
+  display: none;
+}
+
 .start-container {
   position: absolute;
   bottom: 20px;
   left: 0;
   right: 0;
 }
-.solo-options {
-  display: none;
+
+
+.solo-border {
+  border: 4px solid $solo;
 }
+
+.pairs-border {
+  border: 4px solid $pairs;
+}
+
+
 .player1,
 .switch,
 .player2 {
@@ -222,9 +244,3 @@ button {
   border-radius: 50%;
 }
 // COLOURS
-.active {
-  background-color: $active;
-}
-.inactive {
-  background-color: $inactive;
-}

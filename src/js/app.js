@@ -10,7 +10,7 @@ var startGame = function() {
 
 var gameActive = true;
 
-var compBrain = 2;
+var compBrain = 0;
 
 var players = {
   player1: {
@@ -203,19 +203,27 @@ $('.reset-button').on('click', function() {
 });
 
 // Console Nav Pills
-$('.solo').on('click', function() {
-  $('.solo').addClass('active');
-  $('.pairs').removeClass('active');
+$('.solo-tab').on('click', function() {
+  $('.solo-tab').addClass('solo-bkg');
+  $('.pairs-tab').removeClass('pairs-bkg');
+
   $('.solo-options').show();
   $('.pairs-options').hide();
+  $('.mode-options').addClass('solo-border');
+  $('.mode-options').removeClass('pairs-border');
+
   players.player2.name = 'Computer';
 });
 
-$('.pairs').on('click', function() {
-  $('.pairs').addClass('active');
-  $('.solo').removeClass('active');
+$('.pairs-tab').on('click', function() {
+  $('.pairs-tab').addClass('pairs-bkg');
+  $('.solo-tab').removeClass('solo-bkg');
+
   $('.pairs-options').show();
   $('.solo-options').hide();
+  $('.mode-options').addClass('pairs-border');
+  $('.mode-options').removeClass('solo-border');
+
   players.player2.name = 'Player 2';
 });
 
