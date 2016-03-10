@@ -1,13 +1,29 @@
 # Tic Tac Toe
 
-This is the Tic Tac Toe game that I made for my Project Zero at General Assembly Web Development Immersive 13.
+This is a Tic Tac Toe game that I made for my Project Zero, as part of my Web Development Immersive 13 with General Assembly.
 
-Check it out here: http://danielmoi.github.io/ga-01-tic-tac-toe/src/
+## Libraries
+1. jQuery
+2. Fontawesome
 
-My Github repo: https://github.com/danielmoi/ga-01-tic-tac-toe
+## Features
+1. Choose between 2 game modes: 1 Player (vs computer) / 2 Player (vs human)
+2. Choose between 3 levels of computer skill (in 1 player mode)
+3. Choose tile counters ( X / O )
 
+## How to view app
+1. Play it here: http://danielmoi.github.io/ga-01-tic-tac-toe/src/
+2. Clone / fork my repo: https://github.com/danielmoi/ga-01-tic-tac-toe (and open src/index.html in your browser)
 
-A working game, built by you, hosted somewhere on the internet
-A link to your hosted working game in the URL section of your Github repo
-A git repository hosted on Github, with a link to your hosted game, and frequent commits dating back to the very beginning of the project
-A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
+## Approach
+1. Players object, storing `player 1` and `player 2` objects
+2. Nested array of winning combinations
+3. Attach click event handlers to board squares
+4. Sequential function calls to check win, update instructions, and switch turns
+5. Implement computer 'AI' functionality
+6. Update visual design elements
+
+## Helpful Resources
+1. http://api.jquery.com/jquery.each/
+2. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+3. http://fontawesome.io/
