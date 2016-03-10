@@ -113,6 +113,13 @@ h1 {
 
 .solo-options {
   display: none;
+  position: relative;
+}
+
+.brains-container {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .start-container {

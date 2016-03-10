@@ -1,124 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-  <body>
-    <header class="header">
-      <h1>Tic Tac Toe</h1>
+<body>
+  <header class="header">
+    <h1>Tic Tac Toe</h1>
 
-    </header>
+  </header>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="console">
-        <div class="game-mode">
-          <div class="mode-tab solo-tab">1 Player</div>
-          <div class="mode-tab pairs-tab pairs-bkg">2 Players</div>
+    <div class="console">
+      <div class="game-mode">
+        <div class="mode-tab solo-tab">1 Player</div>
+        <div class="mode-tab pairs-tab pairs-bkg">2 Players</div>
 
-          <div class="mode-options pairs-border">
+        <div class="mode-options pairs-border">
 
 
 
-            <div class="solo-options">
-              <div class="solo-tile-options">
-                <div class="player1">
-                  <p>Player 1</p>
-                  <div class="tile player1-tile">X</div>
+          <div class="solo-options">
+            <div class="solo-tile-options">
+              <div class="player1">
+                <p>Player 1</p>
+                <div class="tile player1-tile">X</div>
+              </div>
+              <div class="switch"><i class="fa fa-arrows-h"></i></div>
+              <div class="player2">
+                <p>Computer</p>
+                <div class="tile player2-tile">O</div>
+              </div>
+              <div class="brains-container">
+                <div class="brains0">
+                  <input type="radio" name="brainsGroup" id="brains0" value="brainsVal0" checked>
+                  <label for="brains0">1</label>
                 </div>
-                <div class="switch"><i class="fa fa-arrows-h"></i></div>
-                <div class="player2">
-                  <p>Computer</p>
-                  <div class="tile player2-tile">O</div>
+
+                <div class="brains1">
+                  <input type="radio" name="brainsGroup" id="brains1" value="brainsVal1">
+                  <label for="brains1">2</label>
+                </div>
+
+                <div class="brains2">
+                  <input type="radio" name="brainsGroup" id="brains2" value="brainsVal2">
+                  <label for="brains2">3</label>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="pairs-options">
-              <div class="pairs-tile-options">
-                <div class="player1">
-                  <p>Player 1</p>
-                  <div class="tile player1-tile">X</div>
-                </div>
-                <div class="switch"><i class="fa fa-arrows-h"></i></div>
-                <div class="player2">
-                  <p>Player 2</p>
-                  <div class="tile player2-tile">O</div>
-                </div>
+          <div class="pairs-options">
+            <div class="pairs-tile-options">
+              <div class="player1">
+                <p>Player 1</p>
+                <div class="tile player1-tile">X</div>
+              </div>
+              <div class="switch"><i class="fa fa-arrows-h"></i></div>
+              <div class="player2">
+                <p>Player 2</p>
+                <div class="tile player2-tile">O</div>
               </div>
             </div>
-
-
-
           </div>
 
-          <div class="start-container">
-            <button class="start-button">Play!</button>
-          </div>
+
 
         </div>
 
-      </div>
-
-      <div class="board">
-        <div class="row">
-          <div id="0" class="square">
-            <span class="marker"></span>
-          </div>
-          <div id="1" class="square">
-            <span class="marker"></span>
-          </div>
-          <div id="2" class="square">
-            <span class="marker"></span>
-          </div>
-        </div>
-        <div class="row">
-          <div id="3" class="square">
-            <span class="marker"></span>
-          </div>
-          <div id="4" class="square">
-            <span class="marker"></span>
-          </div>
-          <div id="5" class="square">
-            <span class="marker"></span>
-          </div>
-        </div>
-        <div class="row">
-          <div id="6" class="square">
-            <span class="marker"></span>
-          </div>
-          <div id="7" class="square">
-            <span class="marker"></span>
-          </div>
-          <div id="8" class="square">
-            <span class="marker"></span>
-          </div>
+        <div class="start-container">
+          <button class="start-button">Play!</button>
         </div>
 
-      </div>
-
-      <div class="display">
-        <p class="message"></p>
-      </div>
-
-      <div class="control">
-        <button class="reset-button">Reset</button>
       </div>
 
     </div>
 
-    <script src="js/lib/jquery-1.11.3.min.js"></script>
+    <div class="board">
+      <div class="row">
+        <div id="0" class="square">
+          <span class="marker"></span>
+        </div>
+        <div id="1" class="square">
+          <span class="marker"></span>
+        </div>
+        <div id="2" class="square">
+          <span class="marker"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div id="3" class="square">
+          <span class="marker"></span>
+        </div>
+        <div id="4" class="square">
+          <span class="marker"></span>
+        </div>
+        <div id="5" class="square">
+          <span class="marker"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div id="6" class="square">
+          <span class="marker"></span>
+        </div>
+        <div id="7" class="square">
+          <span class="marker"></span>
+        </div>
+        <div id="8" class="square">
+          <span class="marker"></span>
+        </div>
+      </div>
 
-    <script src="js/app.js"></script>
-    <script src="js/ai.js"></script>
+    </div>
 
-  </body>
+    <div class="display">
+      <p class="message"></p>
+    </div>
+
+    <div class="control">
+      <button class="reset-button">Reset</button>
+    </div>
+
+  </div>
+
+  <script src="js/lib/jquery-1.11.3.min.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/ai.js"></script>
+
+</body>
 
 </html>
