@@ -9,6 +9,7 @@
 // Variables - Game States
 var gameActive = true;
 var gameMode = 'pairs';
+var compThink = false;
 
 var compBrain = 'brainsVal0';
 
@@ -96,11 +97,14 @@ var play = function(move) {
       updateInstructions();
     }
     if (currentPlayer === 'Computer') {
+      compThink = true;
 
       compMove = ai();
 
       var delayMove = function() {
         play(compMove);
+        compThink = false;
+
       };
       timerID = setTimeout(delayMove, 900);
     }
@@ -192,8 +196,10 @@ var reset = function() {
 
 // Game Play
 $(document).on('click', '.square', function() {
-  var move = parseInt($(this)[0].id);
-  play(move);
+  if (compThink === false) {
+    var move = parseInt($(this)[0].id);
+    play(move);
+  }
 });
 
 // Game Reset
